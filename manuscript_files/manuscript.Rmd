@@ -75,7 +75,7 @@ All Heart Rate (HR) and Heart Rate Variability (HRV) data were collected individ
 Participants were provided finger or wrist-worn photoplethysmography (PPG) devices that measures blood oxygen, heart rate, respiratory rate, and wrist temperature. Participants were to wear a PPG device for 30 days, 24 hours per day, specifically required when interpreting in a court setting. Data were collected by having the participants log the date, time, and content description of the case in which interpreting took place. The HRV would be referenced according to the PPG device data and the self-reported participant log. 
 
 ## Statistical Analysis
-All data was analyzed using R and was conducted through various statistical analysis to understand the relationship between HR levels throughout different HR conditions and the practice of mindfulness. 
+We used  for all our analyses.
 
 # Results 
 
