@@ -131,7 +131,7 @@ ggplot(aes(x = mindfulness, y = HR, color = condition)) +
   ylab("HR")
 ```
 
-According to *Table 3*, he results indicate that both mindfulness and condition have significant main effects on HR, as evidenced by their low p-values. Additionally, the interaction effect between mindfulness and condition is also statistically significant, as indicated by a p-value of 0.0001511. This suggests that the relationship between HR and mindfulness may depend on the specific condition.
+According to *Table 3*, the results indicate that both mindfulness and condition have significant main effects on HR, as evidenced by their low p-values. Additionally, the interaction effect between mindfulness and condition is also statistically significant, as indicated by a p-value of 0.0001511. This suggests that the relationship between HR and mindfulness depends on the specific condition type (bs, hs, and ls).
 
 ```{r}
 mod_mc <- lm(HR ~ factor(mindfulness) * factor(condition), data = tidy_data)
