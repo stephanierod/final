@@ -1,5 +1,0 @@
-"0","view(mod_1)
-"
-"2","Error in as.data.frame.default(x[[i]], optional = TRUE, stringsAsFactors = stringsAsFactors) : 
-  cannot coerce class ‘""qr""’ to a data.frame
-"

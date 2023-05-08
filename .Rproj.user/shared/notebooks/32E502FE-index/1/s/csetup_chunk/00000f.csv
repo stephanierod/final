@@ -1,9 +1,0 @@
-"0","library(""papaja"")
-library(tidyverse)
-library(knitr)
-library(kableExtra)
-library(dplyr)
-library(latex2exp)
-r_refs(""r-references.bib"")"
-"2","/bin/sh: r-setup: command not found
-"

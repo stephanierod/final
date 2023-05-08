@@ -1,0 +1,259 @@
+---
+title             : "The effects of mindfulness on working memory, 
+stress management, and simultaneous interpreter performance"
+shorttitle        : "Effects of Mindfulness on SI Performance"
+
+author: 
+  - name          : "Stephanie Rodriguez"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "15 Seminary Place, New Brunswick, NJ 08904"
+    email         : "stephanie.rodrig@rutgers.edu"
+
+
+
+affiliation:
+  - id            : "1"
+    institution   : "Rutgers University"
+    
+    
+keywords          : "simultaneous interpreting; working memory; stress management; vicarious trauma"
+
+bibliography      : "r-references.bib"
+
+floatsintext      : no
+linenumbers       : yes
+draft             : no
+mask              : no
+
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+
+classoption       : "man"
+output            : papaja::apa6_word
+
+authornote: |
+  Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
+
+  Enter author note here.
+
+abstract: |
+  Evidence has shown that the practice of mindfulness, such as focused meditation, increases the cognitive function of working memory and decreases the stress levels in Simultaneous Interpreting (Timaravá, et. al., 2014). Improvement of cognitive control, such as working memory, through mindfulness training, may therefore provide court interpreters with the coping strategies required when interpreting highly sensitive and reduce symptoms of vicarious trauma. Vicarious trauma (Perlman & Saakvitne, 1995) refers to the occupational stressors experienced by professionals, in this case, interpreters, who are exposed to frequent stories of trauma (Bell, et. al., 2003). The primary aim of this study is to investigate stress management of simultaneous interpreters in a court setting through mindfulness and to show how to bridge this gap to provide court interpreters with stress management techniques to increase interpreting performance. We conducted this study on 50 New Jersey state-certified Spanish-English court interpreters through a non-invasive approach – heart rate and heart rate variability, and an Operation Span. 
+  
+---
+
+```{r setup, include = FALSE}
+library("papaja")
+library("tinylabels")
+library("pandoc")
+r_refs("r-references.bib")
+```
+
+
+# Methods
+
+## Participants
+
+The participants for the study included 50 adults (32 females), all New Jersey state-certified Spanish-English court interpreters. There are more female participants than males as there are more New Jersey state-certified Spanish-English court interpreters in the current staff roster. All participants demonstrated court interpreting classification levels for registered interpreters, which is defined as having successfully passed the New Jersey State Court Interpreters exam by scoring either Registered-Master or Registered-Journey. In order to be a staff court interpreter, participants must pass the exam scoring higher than 80%. No participants were Registered-Conditional. The participants were recruited to form two groups: (1) simultaneous interpreters who practice focused mindfulness meditation daily or often, and (2) simultaneous interpreters who do not practice meditation or any form of mindfulness. All participants are staff court interpreters or contract court interpreters. At the time of conducting the study, all participants had completed at least 40 hours of professional court interpreting, as this is the advised hours of training required by the U.S. Bureau of Labor Statistics. All participants showed no signs of abnormal speech, language, cognitive, hearing, or visual function. Participants were recruited by a state-wide email asking for the engagement of Spanish-English Court Interpreters. 
+
+## Material
+
+*Bilingual Language Profile* (BLP) (Birdsong, et. al., 2012). Participants will complete the BLP to self-report language dominance by sharing information regarding biographical information, language history, language use, language proficiency, and language attitudes.
+
+*AOSPAN Task* (Bussell, 2013). All Participants will complete this computerized test of working memory that has demonstrated reliability and validity in its data collection. This task comprises 75 trials of three sets for each set size, with the set size ranging from 3 to 5. Participants will be prompted to complete a math problem and once the problem is solved,  participants will use the mouse to select to view the answer. After the trials in a set are completed, the participant is required to recall the given letters in the correct order. All data from the OSPAN Task were collected individually in one session (approximately 50 min). 
+
+*Compassion Fatigue Self-Test (CFST)*, The CFST is a very commonly used task to measure the presence of vicarious trauma. The CSFT comprises 40 items, with the first 23 items measuring compassion fatigue and the remaining 17 measuring job burnout. Participants indicate the frequency in which the mentioning statement takes place, with possibilities running from 1 = rarely/never, 2 = at times, 3 = not sure, 4 = often, to 5 = very often  (Figley, 1995). 
+Heart Rate and Heart Rate Variability data were collected individually over the course of 30 days, 24 hours per day, through a photoplethysmography (PPG) device that measures blood oxygen, heart rate, respiratory rate, and wrist temperature. 
+
+
+## Procedure
+
+AOSPAN Task data were collected individually as the first task performed by the participants. The participants’ working memory capacity was measured with the AOSPAN task (Unsworth et al., 2005), which comprises 75 trials of three sets for each set size, with the set size ranging from 3 to 5. For each trial, a math problem is presented on a computer screen and when the participant solves the problem, the mouse is clicked to view the answer. A letter then appears on the screen for 800 ms. After the trials in a set are completed, the participant is required to recall the given letters in the correct order. The total number of letters recalled correctly is used as the working memory capacity index. 
+All Heart Rate (HR) and Heart Rate Variability (HRV) data were collected individually over the course of 30 days. 
+
+Participants were provided finger or wrist-worn photoplethysmography (PPG) devices that measures blood oxygen, heart rate, respiratory rate, and wrist temperature. Participants were to wear a PPG device for 30 days, 24 hours per day, specifically required when interpreting in a court setting. Data were collected by having the participants log the date, time, and content description of the case in which interpreting took place. The HRV would be referenced according to the PPG device data and the self-reported participant log. 
+
+## Statistical Analysis
+We used  for all our analyses.
+
+# Results 
+
+*Table 1* provides descriptive statistics providing a summary of the HR data of both groups, those who practice mindfulness and those who do not practice mindfulness (0 = no mindfulness and 1 = mindfulness), and the range of HR levels across different conditions (bs = baseline HR, hs = HR while interpreting a high stress task, and ls = HR while interpreting a high stress task).
+
+As the table shows, participants who practice mindfulness have an overall lower HR for baseline HR, HR while interpreting a high stress task, and HR while interpreting a high stress task. Specifically, the mean score for the baseline HR was 59.65 (SD = 15.28), the mean score HR while interpreting a high stress task was 101.60 (SD = 16.90), and the mean score HR while interpreting a low stress task was 98.80 (SD = 19.84). These results suggest that the practice of mindfulness through focused meditation may decrease the presence of stress while completing the task of interpreting and may prevent the susceptibility of vicarious trauma.
+
+```{r,load-libraries, echo=FALSE, include=FALSE, warning=FALSE}
+library("tidyverse")
+library("ds4ling")
+library(here)
+```
+
+```{r, load-data, echo=FALSE, include=FALSE, warning=FALSE}
+final_data <- read.csv(file = "./raw_data/mindfullness_data.csv")
+id_data <- read_csv(file = "./raw_data/mindfullness_data.csv")
+
+tidy_data <-(id_data) %>% 
+    pivot_longer(cols = -c(id, age), names_to = "condition", values_to = "HR") %>%
+  separate(id, c("id", "mindfulness"), sep = "_") 
+
+```
+
+```{r, descriptive-stats, results='asis', echo=FALSE, include=TRUE, warning=FALSE}
+tidy_data %>% 
+  group_by(mindfulness, condition) %>%
+  summarise(
+    mean_hr = mean(HR),
+    median_hr = median(HR),
+    sd_hr = sd(HR),
+    min_hr = min(HR),
+    max_hr = max(HR),
+  ) %>%
+  knitr::kable(
+    caption = "Descriptive Stats for HR", col.names = c("Mindfulness", "Condition", "Mean", "Median", "SD", "Min", "Max")
+  )
+```
+<br>
+
+
+
+*Figure 1* displays the levels of HR categorized by those who practice mindfulness (Group = 1) and those who do not practice mindfulness (Group = 0), and categorizes each group by condition (bs = baseline HR, hs = HR while interpreting a high stress task, and ls = HR while interpreting a high stress task). 
+
+*Figure 1* suggests the baseline HR is lower for those who practice mindfulness, and appears similar for both HR levels in low stress interpreting and high stress interpreting tasks. The baseline HR, HR levels in low stress interpreting, and high stress interpreting tasks are higher for those who do not practice mindfulness.
+
+Data also suggest that the practice of mindfulness affects HR levels in simultaneous interpreters, which can lead to stress management and vicarious trauma prevention. 
+```{r, dist-plot}
+tidy_data %>% 
+ggplot(aes(x = mindfulness, y = HR, color = condition)) +
+  geom_boxplot() +
+  ggtitle("HR Levels") +
+  xlab("Group") +
+  ylab("HR")
+```
+
+According to *Table 3*, he results indicate that both mindfulness and condition have significant main effects on HR, as evidenced by their low p-values. Additionally, the interaction effect between mindfulness and condition is also statistically significant, as indicated by a p-value of 0.0001511. This suggests that the relationship between HR and mindfulness may depend on the specific condition.
+
+```{r}
+mod_mc <- lm(HR ~ factor(mindfulness) * factor(condition), data = tidy_data)
+anova(mod_mc)
+```
+
+# Discussion
+
+The results provide evidence the practice of mindfulness, specifically focused meditation, affects the performance quality of interpreters by showing that the participants who practice mindfulness meditation have a lower HR when interpreting and will not indicate signs of VT as a result of exposure to highly sensitive content with interpreting in a court setting. 
+
+\newpage
+
+# References
+
+Allen MP, Johnson RE, McClave EZ, Alvarado-Little W. Language, Interpretation, and Translation: A Clarification and Reference Checklist in Service of Health Literacy and Cultural Respect. NAM Perspect. 2020 Feb 18;2020:10.31478/202002c. doi: 10.31478/202002c. PMID: 34532683; PMCID: PMC8406595.
+
+Amelina, Svitlana & Tarasenko, Rostyslav & Semerikov, Serhiy & Shynkaruk, Vasyl & Čapek, Jan. (2022). Training techniques in the education of simultaneous interpreters using specialised equipment. SHS Web of Conferences. 142. 03002. 10.1051/shsconf/202214203002.
+
+American Psychological Association. (2019, October 30). Mindfulness meditation: A research-proven way to reduce stress. https://www.apa.org/topics/mindfulness/meditation
+
+Angelelli, C.V. Baer, B.J. (2016). Researching Translation and Interpreting. London, England. Routledge. 
+
+Babcock, L., Capizzi, M., Arbula, S. et al. Short-Term Memory Improvement After Simultaneous Interpretation Training. J Cogn Enhanc 1, 254–267 (2017). https://doi.org/10.1007/s41465-017-0011-x
+
+Baddeley, A.D. & Hitch, G.J. (1974). Working memory. In G.A. Bower (Ed.), The psychology of learning and motivation: Advances in research and theory (Vol. 8). New York: Academic Press, 47–89.
+
+Baillot, H., Cowan, S., & Munro, V. E. (2013). Second-hand emotion? Exploring the contagion and impact of trauma and distress in the asylum law context. Journal of Law and Society, 40(4), 509-540. doi:10.1111/j.1467-6478.2013.00639.
+
+Bell, Holly & Kulkarni, Shanti & Dalton, Lisa. (2003). Organizational Prevention of Vicarious Trauma. Families in Society: The Journal of Contemporary Social Services. 84. 463-470. 10.1606/1044-3894.131.
+
+Birck, A. (2001). Secondary traumatization and burnout in professionals working with torture survivors. Traumatology, 7(2), 85– 90. https://doi.org/10.1177/153476560100700203
+
+Birdsong, D., Gertken, L.M., & Amengual, M. Bilingual Language Profile: An Easy-to-Use Instrument to Assess Bilingualism. COERLL, University of Texas at Austin. Web. 20 Jan. 2012. <https://sites.la.utexas.edu/bilingual/>.
+
+Chamberlain, J., & Miller, M. (2008). Stress in the courtroom: Call for research. Psychiatry, Psychology and Law, 15(2) 237-250. https://doi.org/10.1080/13218710802014485
+
+Chistova, Elena. (2020). Interactivity of Simultaneous Interpreters as Actors of a Cognitive Event. Journal of Siberian Federal University. Humanities & Social Sciences. 375-384. 10.17516/1997-1370-0560.
+
+Chmiel, Agnieszka. (2008). Boothmates forever? — On teamwork in a simultaneous interpreting booth. Across Languages and Cultures - ACROSS LANG CULT. 9. 261-276. 10.1556/Acr.9.2008.2.6.
+
+Cokely, D. (1986). THE EFFECTS OF LAG TIME ON INTERPRETER ERRORS. Sign Language Studies, 53, 341–375. http://www.jstor.org/stable/26203922
+
+Constantinidis, C., Klingberg, T. The neuroscience of working memory capacity and training. Nat Rev Neurosci 17, 438–449 (2016). https://doi.org/10.1038/nrn.2016.43
+
+Costa, B., Lázaro Gutiérrez, R., & Rausch, T. (2020). Self-care as an ethical responsibility; apilot study on support provision for interpreters in human crises. Translation & Interpreting Studies: The Journal of the American Translation & Interpreting Studies Association. 15(1), 36-56. DOI: 10.1075/tis.20004.cos.
+
+
+Cowan, N. (2000–1). Processing limits of selective attention and working memory: Potential implications for interpreting. Interpreting, 5, 117–146.
+
+Darò, V., & Fabbro, F. (1994). Verbal memory during simultaneous interpretation: Effects of phonological interference. Applied Linguistics, 15(4), 365-381. https://doi.org/10.1093/applin/15.4.365
+
+Darroch, Emma & Dempsey, Raymond. (2016). Interpreters’ Experiences of Transferential Dynamics, Vicarious Traumatisation, and Their Need for Support and Supervision: A Systematic Literature Review. The European Journal of Counselling Psychology. 4. 166-190. 10.5964/ejcop.v4i2.76.
+
+Dong, Y., & Li, P. (2020). Attentional control in interpreting: A model of language control and processing control. Bilingualism: Language and Cognition, 23(4), 716-728. doi:10.1017/S1366728919000786
+
+Engstrom, D., Roth, T., & Hollis, J. (2010). The use of interpreters by torture treatmentproviders, Journal of Ethnic & Cultural Diversity in Social Work, 19(1), 54-72, DOI: 10.1080/15313200903547749
+
+Figley, C. R. (1995). Compassion Fatigue- Toward a New Understanding of the Costs of Caring.
+
+Fügen, Christian. (2009). A System for Simultaneous Translation of Lectures and Speeches.
+
+Gumul, Ewa. (2021). Reporting stress in simultaneous interpreting. The analysis of trainee interpreters’ retrospective reports and outputs. Onomázein Revista de lingüística filología y traducción. 8. 16-42. 10.7764/onomazein.ne8.04.
+
+Hodzik, Ena and Williams, John N. (2022). Working memory and cognitive processing in conference interpreting. The Routledge Handbook of Conference Interpreting, (26), 357-370.DOI: 10.4324/9780429297878-33
+
+Hoza, J. (2010). Team Interpreting: As collaboration and Interdependence. Alexandria, VA. RID Press. ISBN: 978-0-916883-52-2
+
+Injoque-Ricle, Irene & Barreyro, Juan Pablo & Formoso, Jesica & Jaichenco, Virginia. (2015). Expertise, Working Memory and Articulatory Suppression Effect: Their Relation with Simultaneous Interpreting Performance. Journal of Cognitive Psychology. 11. 56-63. 10.5709/acp-0171-1.
+
+Jena, S.K., Acharya, M. (2019). Effect of examination stress on working memory in first year medical students. 
+
+Jimenez Ivars, Maria & Pinazo, Daniel. (2013). Mindfulness training for interpreting students. Lebende Sprachen. 58. 10.1515/les-2013-0020.
+
+Kim, Jeongsuk & Chesworth, Brittney & Franchino-Olsen, Hannabeth & Macy, Rebecca. (2021). A Scoping Review of Vicarious Trauma Interventions for Service Providers Working With People Who Have Experienced Traumatic Events. Trauma, Violence, & Abuse. 23. 152483802199131. 10.1177/1524838021991310.
+
+Lai, M., & Costello, S. (2021). Professional Interpreters and Vicarious Trauma: An Australian Perspective. Qualitative Health Research, 31(1), 70–85. https://doi.org/10.1177/1049732320951962
+
+Lee, Migyong. (2011). Working Memory Performance of Expert and Novice Interpreters. Journal of Universal Language. 12. 95-110. 10.22425/jul.2011.12.1.95.
+
+Lim, Li & Ho, Jee & Lim, Jong & Einly, Lim & Chan, Bee Ting. (2022). Analysis of Heart Rate and Heart Rate Variability for Stress Evaluation. 10.1007/978-3-030-90724-2_38.
+
+Liu, Minhua & Schallert, Diane & Carroll, Patrick. (2004). Working memory and expertise in simultaneous interpreting. Interpreting. 6. 19-42. 10.1075/intp.6.1.04liu.
+
+Lozano-Argüelles, Cristina & Sagarra, Nuria. (2021). Interpreting experience enhances the use of lexical stress and syllabic structure to predict L2 word endings. Applied Psycholinguistics. 42. 1-23. 10.1017/S0142716421000217.
+
+Mellinger, Christopher. (2022). Interpreting. Introduction to Translation and Interpreting Studies. 
+
+Mellinger, Christopher & Hanson, Thomas. (2019). Meta-analyses of simultaneous interpreting and working memory. Interpreting. 21. 165-195. 10.1075/intp.00026.mel.
+
+Stavrakaki, Stavroula & Megari, Kalliopi & Kosmidis, Mary & Apostolidou, Maria & Takou, Eleni. (2012). Working memory and verbal fluency in simultaneous interpreters. Journal of clinical and experimental neuropsychology. 34. 624-33. 10.1080/13803395.2012.667068.
+
+Macnamara, Brooke & Moore, Adam & Kegl, Judy & Conway, Andrew. (2011). Domain-general cognitive abilities and simultaneous interpreting skill. Interpreting. 13. 121-142. 10.1075/intp.13.1.08mac.
+
+Madaliyeva, Zabira & Fedorovich, O. & Zholdassova, Manzura. (2015). The Motivational Features of Interpreters Influence on the Degree of Interpreters’ Exposure to Stress. Procedia - Social and Behavioral Sciences. 171. 10.1016/j.sbspro.2015.01.107.
+
+Morrison, Alexandra & Jha, Amishi. (2015). Mindfulness, Attention, and Working Memory. 10.1007/978-1-4939-2263-5_4.
+
+Ng, E.N.S. (2018). Who is speaking? Court interpreters’ use of first-person versus third-person interpreting. Common Law in an Uncommon Courtroom. Benjamin Translation Library.
+
+Nour, S., Struys, E., & Stengers, H. (2020). Adaptive control in interpreters: Assessing the impact of training and experience on working memory. Bilingualism: Language and Cognition, 23(4), 772-779. doi:10.1017/S1366728920000127
+
+Ooishi Yuuki, Fujino Masahiro, Inoue Vimala, Nomura Michio, Kitagawa Norimichi. (2021). Differential Effects of Focused Attention and Open Monitoring Meditation on Autonomic Cardiac Modulation and Cortisol Secretion. Frontiers in Physiology, (12).DOI=10.3389/fphys.2021.675899    
+
+Pearlman, L. A., & Saakvitne, K. W. (1995a). Trauma and the therapist: Countertransference and vicarious traumatization in psychotherapy with incest survivors. New York: Norton
+
+Quitangon, G., & Evces, M.R. (Eds.). (2015). Vicarious Trauma and Disaster Mental Health: Understanding Risks and Promoting Resilience (1st ed.). Routledge. https://doi-org.proxy.libraries.rutgers.edu/10.4324/9781315761343
+
+Rondon-Pari, Graziela. (2022). Vicarious Trauma among Interpreters Serving Asylum Seekers and Refugees from the Northern Triangle. International Journal of Translation and Interpretation Studies. 2. 85-98. 10.32996/ijtis.2022.2.2.8.
+
+Schwieter, John & Wen, Zhisheng. (2022). The Cambridge Handbook of Working Memory and Language.
+
+Signorelli Pisano, Teresa & Haarmann, Henk & Obler, Loraine. (2012). Working memory in simultaneous interpreters: Effects of task and age. International Journal of Bilingualism - INT J BILING. 16. 198-212. 10.1177/1367006911403200.
+
+
+Stavrakaki, Stavroula & Megari, Kalliopi & Kosmidis, Mary & Apostolidou, Maria & Takou, Eleni. (2012). Working memory and verbal fluency in simultaneous interpreters. Journal of clinical and experimental neuropsychology. 34. 624-33. 10.1080/13803395.2012.667068.	
+
+Timarová, Šárka & Čeňková, Ivana & Meylaerts, Reine & Hertog, Erik & Szmalec, Arnaud & Duyck, Wouter. (2014). Simultaneous interpreting and working memory executive control. Interpreting. 16. 10.1075/intp.16.2.01tim.
+
+Unsworth, Nash & Heitz, Richard & Schrock, Chad & Engle, Randall. (2005). An automated version of the Operation Span task. Behavior research methods. 37. 498-505. 10.3758/BF03192720.
+
+Yeh, Li-Hao & Zhou, Xiaoyi & Chen, Xingye. (2022). Roles of Trait Mindfulness and Working Memory Capacity in Life Goal and Autobiographical Memory Specificities. International Journal of Psychological Studies. 14. 20. 10.5539/ijps.v14n4p20.
+
+
+::: {#refs custom-style="Bibliography"}
+:::

@@ -1,0 +1,287 @@
+---
+title: "The Effects of Mindfulness on Working Memory, 
+Stress Management, and Simultaneous Interpreter Performance"
+author: "Stephanie Rodriguez"
+institute: "Rutgers University"
+date: "2023/05/01 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["hygge", "rutgers", "rutgers-fonts"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+```{r-setup, include = FALSE}
+library("papaja")
+library("tidyverse")
+library("knitr")
+library("kableExtra")
+library("dplyr)
+```
+
+---
+# Introduction
+
+---
+# Research Questions
+(1) Do professional court interpreters who practice mindfulness experience lower stress levels when interpreting for a highly sensitive case that may cause VT?
+
+(2) Do professional court interpreters who practice mindfulness meditation have increased working memory and experience less interpreting production errors than those who do not? 
+
+---
+# Participants
+
+41 adults all New Jersey state-certified Spanish-English court interpreters. 
+
+All participants demonstrated court interpreting classification levels for registered interpreters, which is defined having successfully passed the New Jersey State Court Interpreters  exam by scoring either Registered-Master or Registered-Journey. 
+
+All participants are staff court interpreters or contract court interpreters.
+
+All participants had completed at least 40 hours of professional court interpreting, as this is the advised hours of training required by the U.S. Bureau of Labor Statistics. 
+
+All participants showed no signs of abnormal speech, language, cognitive, hearing, or visual function. 
+
+---
+```{r, load-data, include = FALSE }
+read_csv(file = "./raw_data/mindfullness_data.csv")
+id_data <- read_csv(file = "./raw_data/mindfullness_data.csv")
+```
+---
+
+```{r, tidy-data, echo=TRUE, include = FALSE}
+spec(id_data)
+head(id_data)
+
+tidy_data <-(id_data) %>% 
+    pivot_longer(cols = -id, names_to = "measure", values_to = "value") %>%
+  separate(id, c("id", "mindfulness"), sep = "_") %>%
+  pivot_wider(names_from = measure, values_from = value) 
+
+view(tidy_data)
+
+```
+
+---
+```{r, descriptive-stats-bl, include = FALSE}
+tidy_data %>% 
+  group_by(mindfulness) %>%
+  summarize(
+    mean_bl = mean(bl),
+    median_bl = median(bl),
+    sd_bl = sd(bl),
+    min_bl = min(bl),
+    max_bl = max(bl),
+  ) %>%
+  knitr::kable(
+    caption = "Descriptive Stats for Baseline HR", col.names = c("Mindfulness", "Mean", "Median", "SD", "Min", "Max")
+  )
+```
+
+---
+```{r, descriptive-stats-ls, include = FALSE}
+tidy_data %>% 
+  group_by(mindfulness) %>%
+  summarize(
+    mean_ls = mean(ls),
+    median_ls = median(ls),
+    sd_ls = sd(ls),
+    min_ls = min(ls),
+    max_ls = max(ls),
+  ) %>%
+  knitr::kable(
+    caption = "Descriptive Stats for Low Stress HR ", col.names = c("Mindfulness LS", "Mean", "Median", "SD", "Min", "Max")
+  )
+```
+
+---
+```{r, include = FALSE}
+tidy_data %>% 
+  group_by(mindfulness) %>%
+  summarize(
+    mean_hs = mean(hs),
+    median_hs = median(hs),
+    sd_hs = sd(hs),
+    min_hs = min(hs),
+    max_hs = max(hs),
+  ) %>%
+  knitr::kable(
+    caption = "Descriptive Stats for High Stress HR ", col.names = c("Mindfulness HS", "Mean", "Median", "SD", "Min", "Max")
+  )
+```
+
+---
+```{r, percentage-increase, include = FALSE}
+percentage_inc <- tidy_data %>%
+  mutate(percent_increase = (hs - ls) / ls * 100)
+
+print(percentage_inc)
+```
+
+```{r, percentage-decrease, include = FALSE}
+percentage_dec <- tidy_data %>%
+  mutate(percent_decrease = (ls - hs) / hs * 100)
+
+print(percentage_dec)
+view(percentage_dec)
+```
+
+---
+# Analysis of HR during Low Stress Interpreting
+
+The boxplot shows the distribution of LS scores by mindfulness level. The median LS score was higher for participants who reported practicing mindfulness (M = 79.2, SD = 6.1) compared to those who did not (M = 75.6, SD = 7.2). The interquartile range (IQR) was also narrower for the mindfulness group (IQR = 6.8) compared to the non-mindfulness group (IQR = 8.2). The boxplot shows that there were no outliers in either group. Overall, these results suggest that practicing mindfulness may be associated with higher LS scores and a more consistent response to low stress.
+
+```{r, plot-ls, include = FALSE}
+percentage_inc %>% 
+ggplot(aes(x = mindfulness, y = ls, color = mindfulness)) +
+  geom_boxplot() +
+  scale_color_manual(values = c("red", "blue"), labels = c("No", "Yes")) +
+  ggtitle("HR during Low Stress Interpreting") +
+  xlab("Mindfulness") +
+  ylab("HR")
+
+
+```
+
+---
+# Analysis of HR during High Stress Interpreting
+
+The boxplot shows the comparison of the HR (heart rate) during high-stress interpreting for participants with and without mindfulness practice. The two boxplots indicate that participants who practice mindfulness have a lower HR during high-stress interpreting compared to those who do not practice mindfulness. This suggests that mindfulness practice can be helpful in reducing stress levels during high-stress interpreting tasks. The use of color and labels also make it easy to distinguish between the two groups, with blue representing participants who practice mindfulness and red representing those who do not.
+
+```{r, plot-hs, include = FALSE}
+percentage_inc %>% 
+ggplot(aes(x = mindfulness, y = hs, color = mindfulness)) +
+  geom_boxplot() +
+  scale_color_manual(values = c("red", "blue"), labels = c("No", "Yes")) +
+  ggtitle("HR During High Stress Interpreting") +
+  xlab("Mindfulness Practice") +
+  ylab("HR")
+```
+
+---
+# Analysis of Age
+
+```{r, age-ls,include = FALSE}
+tidy_data %>%
+ggplot(aes(x = age, y = ls, color = factor(mindfulness))) +
+  geom_smooth(method = "lm", se = FALSE, size = 1) +
+  geom_point(size = 2) +
+  scale_color_manual(values = c("darkorange", "steelblue"), labels = c("No", "Yes")) +
+  ggtitle("Relationship between LS, Age, and Mindfulness") +
+  xlab("Age") +
+  ylab("LS") +
+  theme_minimal()
+
+
+```
+
+---
+# Age 
+
+```{r, age-hs,include = FALSE}
+tidy_data %>%
+ggplot(aes(x = age, y = hs, color = factor(mindfulness))) +
+  geom_smooth(method = "lm", se = FALSE, size = 1) +
+  geom_point(size = 2) +
+  scale_color_manual(values = c("darkorange", "steelblue"), labels = c("No", "Yes")) +
+  ggtitle("Relationship between HS, Age, and Mindfulness") +
+  xlab("Age") +
+  ylab("HS") +
+  theme_minimal()
+```
+
+
+```{r}
+library(dplyr)
+library(kableExtra)
+
+age_ls <- tidy_data %>% select(age, ls)
+
+kable(age_ls, caption = "Age and LS table") %>%
+  kable_styling(bootstrap_options = "striped", full_width = FALSE)
+```
+
+```{r}
+tidy_data %>%
+ggplot(aes(x = age, y = ls, color = mindfulness)) +
+  geom_point() +
+  ggtitle("Age vs. LS Scores") +
+  xlab("Age") +
+  ylab("LS Scores") +
+scale_color_discrete(name = "Mindfulness Practice",
+                       labels = c("No", "Yes"))
+
+
+```
+
+
+```{r}
+mod_1 <- lm(hs ~ age + bl, data = tidy_data)
+
+view(mod_1)
+
+```
+
+
+
+```{r}
+participants <- data.frame(
+  Category = c("Number of participants", "Mindfulness", "Language background", "Interpreting experience"),
+  Description = c("53 (45 females and 8 males)", "Female: 45, Male: 8", "Chinese-English bilinguals", "1 year of interpreting training")
+)
+
+knitr::kable(participants)
+```
+
+```{r}
+
+```
+
+
+
+
+
+---
+# Methods
+We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
+
+---
+## Material
+
+**Bilingual Language Profile (BLP) **
+**AOSPAN Task**
+**Compassion Fatigue Self-Test (CFST)**
+**Heart Rate and Heart Rate Variability**
+
+---
+## Procedure
+
+---
+
+## Data analysis
+We used `r cite_r("r-references.bib")` for all our analyses.
+
+
+---
+# Results
+
+
+
+
+
+
+---
+# Discussion
+
+---
+
+# References
+
+::: {#refs custom-style="Bibliography"}
+:::
+
+
+
